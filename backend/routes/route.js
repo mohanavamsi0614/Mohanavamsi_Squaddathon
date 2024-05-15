@@ -9,8 +9,11 @@ app.get("/",async (req,res)=>{
     res.send(data)
 })
 app.post("/add",async(req,res)=>{
-    const data=await todo.create(req.body)
-    res.send("sent")
+    let  data=new todo(req.body)
+    await data.save()
+    data=await todo.find({})
+    console.log(data)
+    res.send(data)
 })
 app.put("/update/:id",async(req,res)=>{
     const data=await todo.findByIdAndUpdate(req.params.id,req.body)

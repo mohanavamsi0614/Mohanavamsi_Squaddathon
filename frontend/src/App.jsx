@@ -20,7 +20,7 @@ function App() {
     axios.post("http://localhost:3000/add",{todo:task}).then(
       (res)=>{
         console.log(res.data)
-        setteaks([...tasks,{todo:task}])
+        setteaks(res.data)
       }
     )
   }
